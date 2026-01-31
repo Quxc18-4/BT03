@@ -31,6 +31,20 @@
         .controls { 
             margin-bottom: 20px; 
         }
+        .pagination { 
+            display: flex; 
+            gap: 10px; 
+            align-items: center; 
+            justify-content: center; 
+        }
+        button { 
+            padding: 5px 10px; 
+            cursor: pointer; 
+        }
+        button:disabled { 
+            opacity: 0.5; 
+            cursor: not-allowed; 
+        }
     </style>
 </head>
 <body>
@@ -38,6 +52,11 @@
     <div id="dashboard">
         <div class="controls" style="margin-bottom: 20px;">
             <input type="text" id="search-input" placeholder="Search by title..." style="padding: 5px; width: 300px;">
+            <select id="items-per-page">
+                <option value="5">5 items/page</option>
+                <option value="10" selected>10 items/page</option>
+                <option value="20">20 items/page</option>
+            </select>
         </div>
         <table>
             <thead>
@@ -51,6 +70,11 @@
             <tbody id="product-table-body">
                 </tbody>
         </table>
+    </div>
+    <div class="pagination">
+        <button id="prev-btn" onclick="changePage(-1)">Previous</button>
+        <span id="page-info">Page 1</span>
+        <button id="next-btn" onclick="changePage(1)">Next</button>
     </div>
     <script src="main.js"></script>
 </body>
