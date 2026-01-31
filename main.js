@@ -24,6 +24,21 @@ searchInput.addEventListener('input', (e) => {
     renderTable(currentData);
 });
 
+function getCleanImageUrl(imgInput) {
+    if (!imgInput) return 'https://via.placeholder.com/100?text=No+Image';
+
+    let url = Array.isArray(imgInput) ? imgInput[0] : imgInput;
+
+    if (typeof url === 'string') {
+        url = url.replace(/[\[\]"]/g, '');
+        
+        if (!url.startsWith('http')) {
+             return 'https://via.placeholder.com/100?text=Invalid+URL';
+        }
+    }
+    return url;
+}
+
 function renderTable(data) {
     const tableBody = document.getElementById('product-table-body');
     tableBody.innerHTML = ''; 
@@ -34,15 +49,17 @@ function renderTable(data) {
     const pageData = currentData.slice(startIndex, endIndex);
 
     pageData.forEach(product => {
-        let imgUrl = 'https://via.placeholder.com/100';
-        if (product.images.length > 0) {
-            imgUrl = product.images[0].replace(/[\[\]"]/g, ''); 
-        }
+        const imgUrl = getCleanImageUrl(product.images);
 
         const row = document.createElement('tr');
         row.innerHTML = `
             <td>${product.id}</td>
-            <td><img src="${imgUrl}" class="product-img" onerror="this.src='https://via.placeholder.com/100'"></td>
+            <img 
+                    src="${imgUrl}" 
+                    class="product-img" 
+                    alt="${product.title}"
+                    onerror="this.onerror=null; this.src='https://via.placeholder.com/100?text=Error';"
+                >
             <td>${product.title}</td>
             <td>$${product.price}</td>
         `;
