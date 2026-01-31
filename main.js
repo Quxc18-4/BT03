@@ -61,6 +61,9 @@ function renderTable(data) {
                     onerror="this.onerror=null; this.src='https://via.placeholder.com/100?text=Error';"
                 >
             <td>${product.title}</td>
+            <td>
+                ${product.description}
+            </td>
             <td>$${product.price}</td>
         `;
         tableBody.appendChild(row);
