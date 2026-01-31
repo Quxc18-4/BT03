@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Dashboard - Ver 1</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: Arial, sans-serif;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+        tr:nth-child(odd) {
+            background-color: #ffffff;
+            color: #000000;
+        }
+        tr:nth-child(even) {
+            background-color: #000000;
+            color: #ffffff;
+        }
+        .product-img {
+            width: 100px;
+            height: auto;
+            object-fit: contain;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <h1>Product Dashboard</h1>
+    <div id="dashboard">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Image</th>
+                    <th>Title</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody id="product-table-body">
+                </tbody>
+        </table>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>
