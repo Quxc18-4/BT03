@@ -57,6 +57,12 @@
                 <option value="10" selected>10 items/page</option>
                 <option value="20">20 items/page</option>
             </select>
+            <div style="margin-top: 10px;">
+                <button onclick="handleSort('price', 'asc')">Giá tăng</button>
+                <button onclick="handleSort('price', 'desc')">Giá giảm</button>
+                <button onclick="handleSort('title', 'asc')">Tên A-Z</button>
+                <button onclick="handleSort('title', 'desc')">Tên Z-A</button>
+            </div>
         </div>
         <table>
             <thead>

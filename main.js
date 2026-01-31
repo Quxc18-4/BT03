@@ -70,4 +70,17 @@ document.getElementById('items-per-page').addEventListener('change', (e) => {
     renderTable(currentData);
 });
 
+function handleSort(key, order) {
+    currentData.sort((a, b) => {
+        if (key === 'price') {
+            return order === 'asc' ? a.price - b.price : b.price - a.price;
+        } else if (key === 'title') {
+            return order === 'asc' 
+                ? a.title.localeCompare(b.title) 
+                : b.title.localeCompare(a.title);
+        }
+    });
+    renderTable(currentData);
+}
+
 getAllProducts();
